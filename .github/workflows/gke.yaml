@@ -14,8 +14,8 @@ env:
   GKE_CLUSTER_LOCATION: us-central1-c
 
 jobs:
-  setup-build-push:
-    name: build, push
+  deploy:
+    name: deploy
     runs-on: ubuntu-latest
 
     # Add "id-token" with the intended permissions.
