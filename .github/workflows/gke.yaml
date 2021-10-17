@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - kubernetes
+      - kubernetes/**.yaml
       - .github/workflows/gke.yaml
 
 env:
