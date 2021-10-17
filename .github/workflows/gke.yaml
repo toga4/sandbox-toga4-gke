@@ -1,0 +1,47 @@
+name: Deploy to GKE
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - kubernetes
+      - .github/workflows/gke.yaml
+
+env:
+  GCLOUD_PROJECT: sandbox-toga4-gke
+  GKE_CLUSTER_NAME: sandbox-toga4-gke-cluster01-tokyo
+  GKE_CLUSTER_LOCATION: us-central1-c
+
+jobs:
+  setup-build-push:
+    name: build, push
+    runs-on: ubuntu-latest
+
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Configure Workload Identity Federation via a credentials file.
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@main
+        with:
+          create_credentials_file: true
+          workload_identity_provider: projects/25913936332/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider
+          service_account: github-actions@sandbox-toga4-gke.iam.gserviceaccount.com
+
+      - name: Authenticate to GKE
+        uses: google-github-actions/get-gke-credentials@main
+        with:
+          cluster_name: my-cluster
+          location: us-central1-a
+
+      - name: Deploy to GKE
+        run: |
+          kubectl apply -k ./kubernetes
