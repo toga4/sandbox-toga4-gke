@@ -37,10 +37,9 @@ jobs:
           service_account: github-actions@sandbox-toga4-gke.iam.gserviceaccount.com
 
       - name: Authenticate to GKE
-        uses: google-github-actions/get-gke-credentials@main
-        with:
-          cluster_name: my-cluster
-          location: us-central1-a
+        run: |
+          gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+          gcloud container clusters get-credentials $GKE_CLUSTER_NAME
 
       - name: Deploy to GKE
         run: |
