@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-app-challange
+  name: go-api-challange
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: go-app-challange
+      app: go-api-challange
   template:
     metadata:
       labels:
-        app: go-app-challange
+        app: go-api-challange
     spec:
       containers:
-        - name: go-app-challange
+        - name: go-api-challange
           image: IMAGE_PATH
           imagePullPolicy: IfNotPresent
           ports:

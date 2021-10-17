@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
 - deployment.yaml
 commonLabels:
-  app: go-app-challange
+  app: go-api-challange
 images:
 - name: IMAGE_PATH
-  newName: gcr.io/sandbox-toga4-gke/go-app-challange
+  newName: gcr.io/sandbox-toga4-gke/go-api-challange
   newTag: latest
