@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-app-challange
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-app-challange
+  template:
+    metadata:
+      labels:
+        app: go-app-challange
+    spec:
+      containers:
+        - name: go-app-challange
+          image: IMAGE_PATH
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              port: 8000
+              path: /healthz
+            initialDelaySeconds: 5
+            periodSeconds: 5
