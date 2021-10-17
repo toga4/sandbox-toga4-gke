@@ -35,6 +35,9 @@ jobs:
           create_credentials_file: true
           workload_identity_provider: projects/25913936332/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider
           service_account: github-actions@sandbox-toga4-gke.iam.gserviceaccount.com
+          access_token_scopes: |
+            https://www.googleapis.com/auth/cloud-platform
+            https://www.googleapis.com/auth/userinfo.email
 
       - name: Authenticate to GKE
         run: |
