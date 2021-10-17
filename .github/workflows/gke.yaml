@@ -42,6 +42,7 @@ jobs:
       - name: Authenticate to GKE
         run: |
           gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+          gcloud container clusters list
           gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_CLUSTER_LOCATION
 
       - name: Deploy to GKE
