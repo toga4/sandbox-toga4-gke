@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: go-app-challange
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: go-app-challange
