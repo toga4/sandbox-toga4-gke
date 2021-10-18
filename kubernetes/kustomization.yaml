@@ -7,4 +7,4 @@ commonLabels:
 images:
 - name: IMAGE_PATH
   newName: gcr.io/sandbox-toga4-gke/go-api-challange
-  newTag: latest
+  newTag: b9bb7a0b5d07fb4a31847dc4b897769847584795
