@@ -16,6 +16,11 @@ spec:
         - name: go-api-challange
           image: IMAGE_PATH
           imagePullPolicy: IfNotPresent
+          env:
+            - name: GO_ENV
+              value: development
+            - name: GCP_PROJECT_ID
+              value: sandbox-toga4-gke
           ports:
             - containerPort: 8000
           readinessProbe:

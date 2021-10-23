@@ -23,7 +23,7 @@ gcloud beta compute firewall-rules create fw-allow-proxies \
   --direction=ingress \
   --source-ranges=10.0.0.0/23 \
   --target-tags=gke-sandbox-toga4-gke-cluster01-tokyo-55b18d75-node \
-  --rules=tcp:80
+  --rules=tcp
 
 gcloud beta compute addresses create gke-ingress-us-central1  \
   --project=sandbox-toga4-gke \
@@ -32,8 +32,9 @@ gcloud beta compute addresses create gke-ingress-us-central1  \
 
 gcloud beta compute health-checks create http go-api-challange-hc \
   --project=sandbox-toga4-gke \
-   --region=us-central1 \
-   --use-serving-port
+  --region=us-central1 \
+  --request-path=/healthz \
+  --use-serving-port
 
 gcloud beta compute backend-services create go-api-challange-bes \
   --project=sandbox-toga4-gke \
@@ -42,6 +43,7 @@ gcloud beta compute backend-services create go-api-challange-bes \
   --port-name=http \
   --health-checks=go-api-challange-hc \
   --health-checks-region=us-central1 \
+  --enable-logging \
   --region=us-central1
 
 gcloud beta compute url-maps create gke-ingress-us-central1-map \
@@ -60,6 +62,7 @@ gcloud beta compute forwarding-rules create gke-ingress-us-central1-fwd-rule \
   --load-balancing-scheme=EXTERNAL_MANAGED \
   --network-tier=STANDARD \
   --network=default \
+  --subnet=default \
   --address=gke-ingress-us-central1 \
   --ports=80 \
   --region=us-central1 \
