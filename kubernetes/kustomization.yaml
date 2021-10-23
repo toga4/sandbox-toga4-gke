@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
 - deployment.yaml
 - service.yaml
+- backendconfig.yaml
+- ingress.yaml
 commonLabels:
   app: go-api-challange
 images:
