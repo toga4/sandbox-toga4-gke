@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-api-challange
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"80":{}}}'
+spec:
+  type: ClusterIP
+  selector:
+    app: go-api-challange
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8000
