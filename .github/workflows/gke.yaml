@@ -40,9 +40,10 @@ jobs:
             https://www.googleapis.com/auth/userinfo.email
 
       - name: Authenticate to GKE
-        run: |
-          gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-          gcloud container clusters get-credentials $GKE_CLUSTER_NAME --project $GCLOUD_PROJECT --zone $GKE_CLUSTER_LOCATION
+        uses: google-github-actions/get-gke-credentials@main
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER_NAME }}
+          location: ${{ env.GKE_CLUSTER_LOCATION }}
 
       - name: Deploy to GKE
         run: |
