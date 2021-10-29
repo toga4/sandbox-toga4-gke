@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: go-api-challange
   annotations:
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.class: "gce"
 spec:
   defaultBackend:
