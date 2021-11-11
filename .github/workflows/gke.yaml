@@ -43,7 +43,7 @@ jobs:
         run: cat ${{ steps.auth.outputs.credentials_file_path }}
 
       - name: Authenticate to GKE
-        uses: google-github-actions/get-gke-credentials@main
+        uses: toga4/get-gke-credentials@test-identity-pool-cred
         with:
           cluster_name: ${{ env.GKE_CLUSTER_NAME }}
           location: ${{ env.GKE_CLUSTER_LOCATION }}
