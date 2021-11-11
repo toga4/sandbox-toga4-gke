@@ -43,10 +43,6 @@ jobs:
         run: cat ${{ steps.auth.outputs.credentials_file_path }}
 
       - name: Authenticate to GKE
-        run: |
-          gcloud auth login --quiet --update-adc --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-
-      - name: Authenticate to GKE
         uses: google-github-actions/get-gke-credentials@main
         with:
           cluster_name: ${{ env.GKE_CLUSTER_NAME }}
