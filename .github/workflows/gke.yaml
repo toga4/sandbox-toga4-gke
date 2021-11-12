@@ -39,9 +39,6 @@ jobs:
             https://www.googleapis.com/auth/cloud-platform
             https://www.googleapis.com/auth/userinfo.email
 
-      - name: cat ADC
-        run: cat ${{ steps.auth.outputs.credentials_file_path }}
-
       - name: Authenticate to GKE
         uses: toga4/get-gke-credentials@test-identity-pool-cred
         with:
