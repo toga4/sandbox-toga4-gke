@@ -10,8 +10,8 @@ on:
 
 env:
   GCLOUD_PROJECT: sandbox-toga4-gke
-  GKE_CLUSTER_NAME: sandbox-toga4-gke-cluster01-tokyo
-  GKE_CLUSTER_LOCATION: us-central1-c
+  GKE_CLUSTER_NAME: sandbox-toga4-gke-autopilot-cluster
+  GKE_CLUSTER_LOCATION: us-central1
 
 jobs:
   deploy:
