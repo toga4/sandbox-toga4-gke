@@ -12,6 +12,8 @@ spec:
       labels:
         app: go-api-challange
     spec:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
       containers:
         - name: go-api-challange
           image: IMAGE_PATH
@@ -34,5 +36,3 @@ spec:
               path: /healthz
             initialDelaySeconds: 5
             periodSeconds: 5
-          nodeSelector:
-            cloud.google.com/gke-spot: "true"
