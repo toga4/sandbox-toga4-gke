@@ -40,7 +40,7 @@ jobs:
             https://www.googleapis.com/auth/userinfo.email
 
       - name: Authenticate to GKE
-        uses: toga4/get-gke-credentials@test-identity-pool-cred
+        uses: google-github-actions/get-gke-credentials@main
         with:
           cluster_name: ${{ env.GKE_CLUSTER_NAME }}
           location: ${{ env.GKE_CLUSTER_LOCATION }}
